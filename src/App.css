@@ -1,0 +1,195 @@
+
+#map {
+  overflow:hidden;
+  bottom:0px;
+  height: 100%;
+  left: 382px;
+  position: absolute;
+  right: 0px;
+}
+
+h2 {
+  color: red;
+  font-size: 28px;
+}
+
+/* search*/
+.searchNav {
+  background-color: rgba(11,56,135);
+  padding: 6px;
+} 
+
+/* list-view-menu css */
+
+ul {
+  margin: 0;
+  padding: 20px;
+}
+
+.menu-title {
+  padding-top: 5px;
+  font-size: 25px;
+  padding-left: 20px;
+}
+
+.list-view-menu{
+  border: 4px;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  background-color: #f1f1f1;
+  font-size: 12px;
+  max-height: 35em;
+  overflow-y: auto;
+  width: 15px;
+  /* box shadow from color-hex.com*/
+  /*box-shadow
+    -webkit-box-shadow: 0px 4px 30px 4px rgb(165, 165, 165);
+    -moz-box-shadow: 0px 4px 30px 4px rgb(165, 165, 165);*/
+  box-shadow: 0px 4px 30px 4px rgba(11,56,135);
+}
+
+.sub-menu li {
+  
+  width: 100%;
+  font-weight: bold;
+  list-style-type: none;
+  padding: 15px 3px;
+  border-bottom: 1px solid rgb(165, 165, 165);
+}
+
+.view-list-Marker {
+  padding-right:20px;
+  height: 30px;
+  width: 30px;
+}
+
+li:hover {
+  cursor: pointer;
+  background: #b5ccc8;
+}
+
+.searchBttn {
+  margin: 20px;
+  -moz-box-shadow:inset 0px 0px 0px 0px #fff6af;
+  -webkit-box-shadow:inset 0px 0px 0px 0px #fff6af;
+   background-color:#ffec64;
+  -moz-border-radius:25px;
+  -webkit-border-radius:25px;
+  border-radius:15px;
+  border:4px gray;
+  display:inline-block;
+  cursor:pointer;
+  color:black;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  padding:12px 20px;
+  }
+
+
+input {
+  background: rgba(255,255,255,1);
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  border: 5px solid rgba(0,0,255,0.18);
+  border-radius: 50px;
+  font: normal 16px/normal Arial, Helvetica, sans-serif;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 4px 4px 0 rgba(255,255,255,0.66) ;
+ }
+
+
+/* Media Queries  */
+
+
+@media only screen and (max-width: 600px) {
+
+  h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #map {
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .searchNav {
+    position: relative;
+    width: 100%;
+    padding: 10px 0px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .menu-title {
+   text-align: center;
+   padding-top: 5px;
+  }
+
+  .listMenu-Box {
+    position: relative;
+    height: 170px;
+    width: 100%;
+    background-color: #f1f1f1;
+    margin-top: 380px;
+  }
+
+  .list-view-menu {
+    position: relative;
+    padding: 0.7em;
+    max-height: 5em;
+    width: 90%;
+    margin: 0% auto;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+    }
+  
+  .sub-menu li {
+    font-size: 2em;
+    text-align: left;
+    list-style-type: none;
+    padding: 2em;
+    border-bottom: .5px solid rgb(165, 165, 165);
+  }
+  
+  li:hover {
+    cursor: pointer;
+    background: #f1f1f1;
+  }
+
+  .view-list-Marker {
+    padding-right:20px;
+    height: 40px;
+    width: 40px;
+  }  
+
+  .map-wrapper .listBoxMenu{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  
+}
+
+@media only screen and (min-width: 600px) {
+  .list-view-menu{
+    background-color: white;
+    width: 300px;
+    margin: 10px;
+    border: 1px solid gainsboro;
+    font-size: 12px;
+    max-height: 35em;
+    overflow-y: auto;
+  }
+}  
