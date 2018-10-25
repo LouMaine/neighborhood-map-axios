@@ -13,6 +13,11 @@ h2 {
   font-size: 28px;
 }
 
+h6 {
+  color: red;
+  font-size: 12px;
+}
+
 /* search*/
 .searchNav {
   background-color: rgba(11,56,135);
@@ -38,7 +43,7 @@ ul {
   border-radius: 10px;
   position: relative;
   background-color: #f1f1f1;
-  font-size: 12px;
+  font-size: 15px;
   max-height: 35em;
   overflow-y: auto;
   width: 15px;

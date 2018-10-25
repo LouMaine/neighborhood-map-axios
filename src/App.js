@@ -39,7 +39,7 @@ export default class App extends Component {
 
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: 44.388861, lng: -68.798958},
-      zoom: 9
+      zoom: 15
 
     });
     const gblMarkers = [];
@@ -53,25 +53,51 @@ export default class App extends Component {
         let marker = new window.google.maps.Marker({
           position: {lat: locVenue.venue.location.lat, lng: locVenue.venue.location.lng},
           map: map,
+
+          animation: window.google.maps.Animation.BOUNCE,
           animation: window.google.maps.Animation.DROP,
           title: locVenue.venue.name,
-          id: locVenue.venue.id
-        });
+          address: locVenue.venue.location.address,
+          id: locVenue.venue.id,
+
+          });
 
         // click on marker to display infowindow
-        marker.addListener('click', function(event) {
-          console.log('click event?', event);
+        //old-marker.addListener('click', function(event) {
+        //old-console.log('click event?', event);
           // change the content
-          infowindow.setContent(venueName);
-          // open info window
-          infowindow.open(map, marker);
+         //0ld-infowindow.setContent(venueName);
+         let info_Window = '<div class="info_window">' +
+         '<h6>' + locVenue.venue.name + '</h6>' +
+         //infowindow.setContent(venueName);
+         '<p>' + locVenue.venue.location.formattedAddress[0] + '</p>' +
+         '<p>' + locVenue.venue.location.formattedAddress[1] + '</p>' +
+         '</div>'
+          marker.addListener('click', function(event) {
+          console.log('click event?', event);
+            if (marker.getAnimation() !== null) { marker.setAnimation(null); }
+           else { marker.setAnimation(window.google.maps.Animation.BOUNCE); }
+          setTimeout(() => { marker.setAnimation(null) }, 1000);
+        });
+           window.google.maps.event.addListener(marker, 'click', () => {
+           infowindow.setContent(info_Window);
+           map.setZoom(16);
+           map.setCenter(marker.position);
+           infowindow.open(this.map, marker);
+           //map.panBy(0, -125);
+        });
+        
+        gblMarkers.push(marker);
+       // info_windows.push({ id: venue.id, name: venue.name, contents: infowindow});
+         
+        //old-infowindow.open(map, marker);
         });
         // Extend boundry on map for each marker
-        bounds.extend(marker.position);
-        gblMarkers.push(marker);
-      })
+        //bounds.extend(marker.position);
+       //old-gblMarkers.push(marker);
+      //old-})
       // makes map fit to boundry
-      map.fitBounds(bounds);
+      //map.fitBounds(bounds);
       this.setState({ gblMarkers });
   }
 
@@ -82,7 +108,8 @@ export default class App extends Component {
       client_id: '0XBIXCHNQCEQD21UPJ5DKCPFB1W34S4XEQ1HGYWLBBNHDMCS',
       client_secret: 'C0QAOQSWA4WTDNO1ZZ3MS4KQXFTBXSTYLNJR3JIB1DMRNVJR',
       query: query,
-      near: 'Castine',
+      limit: 5,
+      near: 'castine',
       v: '20181016'
     };
 
@@ -118,15 +145,14 @@ export default class App extends Component {
     const ListViewData = this.state.venues.map((item, index) => {
       const { id, name } = item.venue;
       return (
-        <li
+        <li role = "link"
             key={id}
             onClick={() => this.handleVenueClick(index)}
 
-            aria-labelledby="venue_list"
             tabIndex="0"
             >            
 
-            <img className="view-list-Marker" src={Marker} alt="google-marker"/>
+            <img className="view-list-Marker" src={Marker} alt="venue-menu-marker"/>
             {name}
           </li>
       );
@@ -152,7 +178,7 @@ export default class App extends Component {
 }
 
 // Google authentication API error alert
-window.googlemaps_authFailure = function() {
+window.gm_authFailure = function() {
   alert('Google map key failure error');
 }
 

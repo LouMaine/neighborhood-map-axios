@@ -33,13 +33,13 @@ export default class SearchedNav extends Component {
              value={searchInputLine}
              id="searchInputLine"
               
-          aria-labelledby="search-venue"
+          aria-label="search-venue"
         />
       <button 
           id="search-venue"
           className="searchBttn"
 
-              aria-labelledby="Search-button"
+              button aria-label="Search-button"
               onClick={() => this.props.getVenues(searchInputLine)}
               >
           Search
